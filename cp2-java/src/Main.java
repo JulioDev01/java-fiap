@@ -49,6 +49,7 @@ public class Main {
                     break;
                 } else {
                     JOptionPane.showMessageDialog(null, "Opção inválida.");
+                    break;
                 }
             }
 
@@ -69,6 +70,7 @@ public class Main {
                     break;
                 } else {
                     JOptionPane.showMessageDialog(null, "Opção inválida.");
+                    break;
                 }
             }
 
@@ -89,6 +91,7 @@ public class Main {
                     break;
                 } else {
                     JOptionPane.showMessageDialog(null, "Opção inválida.");
+                    break;
                 }
             }
         }
