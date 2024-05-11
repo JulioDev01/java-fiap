@@ -1,63 +1,59 @@
 package br.com.fiap.loja.model;
 
 public class Produto {
-    private String nome;
+
     private int id;
-    private float preco;
+    private String nome;
     private String descricao;
+    protected double preco;
+
     private float peso;
 
-    public Produto(){}
+    public Produto(){
+        super();
+    }
 
-    public Produto(String nome, int id, float preco, String descricao, float peso) {
-        this.nome = nome;
+    public Produto(int id, String nome, String descricao, double preco, float peso) {
         this.id = id;
-        this.preco = preco;
+        this.nome = nome;
         this.descricao = descricao;
+        this.preco = preco;
         this.peso = peso;
+    }
+
+    //Sobrescreve o método chamado quando o objeto é impresso (System.out ou JOption)
+    @Override
+    public String toString() {
+        return "Id: "  + id + "\nNome: " + nome + "\nDescrição: " + descricao
+                + "\nPreço: " + preco + "\nPeso: " + peso;
     }
 
     //Sobrecarga de métodos: métodos na mesma classe, com o mesmo nome e parametros diferentes
     public double calcularPrecoComDesconto(double porcentagem){
-        return (preco * porcentagem / 100) - preco;
+        return  preco - preco * porcentagem / 100;
     }
 
     public double calcularPrecoComDesconto(int quantidade){
         if (quantidade >= 5 && quantidade <= 9)
             return calcularPrecoComDesconto(10.0) * quantidade;
-
-        if (quantidade >= 10)
+        if (quantidade > 9)
             return calcularPrecoComDesconto(20.0) * quantidade;
-
-        return preco;
+        return preco * quantidade;
     }
 
+    //FIAP25 dá 25% de desconto, FIAP40 dá 40% de desconto
     public double calcularPrecoComDesconto(String cupom){
-        if (cupom.equals("FIAP25")){
+        if (cupom.equals("FIAP25"))
             return calcularPrecoComDesconto(25.0);
-        }
-        if (cupom.equals("FIAP40")){
+        if (cupom.equals("FIAP40"))
             return calcularPrecoComDesconto(40.0);
-        }
         return preco;
     }
 
     public double calcularFrete(double distancia){
-        double frete = (peso * 0.1) + (distancia * 0.2);
-        if (preco > 250 && peso < 5 && distancia > 100){
+        if (preco > 250 && peso < 5 && distancia < 100)
             return 0;
-        }
-        return (peso * 0.1) + (distancia * 0.2);
-    }
-
-
-    //getters e setters
-    public String getNome() {
-        return nome;
-    }
-
-    public void setNome(String nome) {
-        this.nome = nome;
+        return 0.1 * peso + 0.2 * distancia;
     }
 
     public int getId() {
@@ -68,12 +64,12 @@ public class Produto {
         this.id = id;
     }
 
-    public float getPreco() {
-        return preco;
+    public String getNome() {
+        return nome;
     }
 
-    public void setPreco(float preco) {
-        this.preco = preco;
+    public void setNome(String nome) {
+        this.nome = nome;
     }
 
     public String getDescricao() {
@@ -82,6 +78,14 @@ public class Produto {
 
     public void setDescricao(String descricao) {
         this.descricao = descricao;
+    }
+
+    public double getPreco() {
+        return preco;
+    }
+
+    public void setPreco(double preco) {
+        this.preco = preco;
     }
 
     public float getPeso() {

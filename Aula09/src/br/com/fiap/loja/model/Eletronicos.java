@@ -1,6 +1,7 @@
 package br.com.fiap.loja.model;
 
-public class Eletronicos extends Produto{
+public class Eletronicos extends Produto {
+
     private String categoria;
     private int capacidadeBateria;
     private int armazenamento;
@@ -8,15 +9,14 @@ public class Eletronicos extends Produto{
 
     public Eletronicos(){}
 
-    public Eletronicos(String nome, int id, float preco, String descricao, float peso, String categoria, int capacidadeBateria, int armazenamento, boolean garantia) {
-        super(nome, id, preco, descricao, peso);
+    public Eletronicos(int id, String nome, String descricao, double preco, float peso, String categoria, int capacidadeBateria, int armazenamento, boolean garantia) {
+        super(id, nome, descricao, preco, peso);
         this.categoria = categoria;
         this.capacidadeBateria = capacidadeBateria;
         this.armazenamento = armazenamento;
         this.garantia = garantia;
     }
 
-    //getters e setters
     public String getCategoria() {
         return categoria;
     }
