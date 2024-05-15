@@ -15,7 +15,12 @@ public class Tecnologo extends Formacao{
 
 
     public double calcularMensalidade(double fator){
-        return 24 * fator * 500;
+        return getDuracao() * fator * 500;
+    }
+
+    @Override
+    public void definirDuracao() {
+        duracao = 24;
     }
 
     //get e set

@@ -19,7 +19,16 @@ public class Bacharelado extends Formacao{
 
 
     public double calcularMensalidade(double fator){
-        return (60 * fator * 600) + (cargaHorariaEstagio * 12);
+        return (getDuracao() * fator * 600) + (cargaHorariaEstagio * 12);
+    }
+
+    @Override
+    public void definirDuracao() {
+        if (descricao.toLowerCase().contains("ENGENHARIA")){
+            duracao = 60;
+        } else {
+            duracao = 48;
+        }
     }
 
     //get e set

@@ -1,11 +1,12 @@
 package br.com.fiap.ensino.model;
 
-public class Formacao {
+//Classe abstrata -> não pode ser instanciada e pode conter métodos abstratos
+public abstract class Formacao {
 
-    private String descricao;
+    protected String descricao;
     private int periodo;
     private double mensalidade;
-    private int duracao;
+    protected int duracao;
 
     public Formacao(String descricao, int periodo, double mensalidade, int duracao) {
         this.descricao = descricao;
@@ -22,8 +23,13 @@ public class Formacao {
                 "\nDuração: " + duracao;
     }
 
-    public void definirDuracao(){
+
+    public double calcularMensalidade(double fator){
+        return getDuracao() * fator * 500;
     }
+
+    //Método abstrato, sem implementação
+    public abstract void definirDuracao();
 
     public double calcularMedia(double global1, double global2){
         return (global1 * 0.4) + (global2 * 0.6);

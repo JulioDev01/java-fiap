@@ -15,7 +15,12 @@ public class Medio extends Formacao{
     }
 
     public double calcularMensalidade(double fator){
-        return 36 * fator * 600;
+        return getDuracao() * fator * 600;
+    }
+
+    @Override
+    public void definirDuracao() {
+        duracao = 36;
     }
 
     //get e set
